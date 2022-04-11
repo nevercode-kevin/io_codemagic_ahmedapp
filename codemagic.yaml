@@ -4,31 +4,30 @@ workflows:
     instance_type: mac_mini
     max_build_duration: 120
     environment:
-      vars:
-        CM_KEYSTORE_PATH: /tmp/keystore.keystore
       groups:
         - keystore_credentials
         - FIREBASE_TOKEN
         - other
       flutter: stable
     scripts:
-      - name: Get Flutter packages
+      - name: set up key.properties
         script: |
-          cd . && flutter packages pub get
-      - name: Set up debug key.properties
+        echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+        cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+        storePassword=$CM_KEYSTORE_PASSWORD
+        keyPassword=$CM_KEY_PASSWORD
+        keyAlias=$CM_KEY_ALIAS
+        storeFile= $CM_KEYSTORE_PATH
+        EOF
+      - name: set up local properties
         script: |
-          keytool -genkeypair \
-            -alias androiddebugkey \
-            -keypass android \
-            -keystore ~/.android/debug.keystore \
-            -storepass android \
-            -dname 'CN=Android Debug,O=Android,C=US' \
-            -keyalg 'RSA' \
-            -keysize 2048 \
-            -validity 10000
-      - name: Build APK with Flutter
+        echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Pub Get
         script: |
-          cd . && flutter build apk --debug --build-name=1.0.5
+        flutter packages pub get
+      - name: Pub Get
+        script: |
+        flutter build apk --release --build-name=1.0.5 --build-number=$PROJECT_BUILD_NUMBER
     artifacts:
       - build/**/outputs/**/*.apk
     publishing:
