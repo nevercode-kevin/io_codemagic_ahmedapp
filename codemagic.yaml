@@ -12,13 +12,13 @@ workflows:
     scripts:
       - name: set up key.properties
         script: |
-        echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
-        cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-        storePassword=$CM_KEYSTORE_PASSWORD
-        keyPassword=$CM_KEY_PASSWORD
-        keyAlias=$CM_KEY_ALIAS
-        storeFile= $CM_KEYSTORE_PATH
-        EOF
+         echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+         cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+         storePassword=$CM_KEYSTORE_PASSWORD
+         keyPassword=$CM_KEY_PASSWORD
+         keyAlias=$CM_KEY_ALIAS
+         storeFile= $CM_KEYSTORE_PATH
+         EOF
       - name: set up local properties
         script: |
         echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
