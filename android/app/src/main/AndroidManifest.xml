@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.io_codemagic_ahmedapp">
+    package="io.codemagic.ahmedapp">
    <application
         android:label="io_codemagic_ahmedapp"
         android:name="${applicationName}"
