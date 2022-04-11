@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1033037829777:android:98359919d7630e78bf1130",
+        "mobilesdk_app_id": "1:1033037829777:android:eb6b7ddcf81fed3cbf1130",
         "android_client_info": {
-          "package_name": "com.example.io_codemagic_ahmedapp"
+          "package_name": "io.codemagic.ahmedapp"
         }
       },
       "oauth_client": [

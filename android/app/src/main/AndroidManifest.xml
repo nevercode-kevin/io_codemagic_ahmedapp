@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.codemagic.ahmedapp">
    <application
-        android:label="io_codemagic_ahmedapp"
+        android:label="io.codemagic.ahmedapp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
