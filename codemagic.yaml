@@ -38,10 +38,10 @@ workflows:
         notify:
           success: true
           failure: false
-      firebase:
-        firebase_token: $FIREBASE_TOKEN
-        android:
-          app_id: 1:1033037829777:android:98359919d7630e78bf1130
-          groups:
-            - androidTesters
+#       firebase:
+#         firebase_token: $FIREBASE_TOKEN
+#         android:
+#           app_id: 1:1033037829777:android:98359919d7630e78bf1130
+#           groups:
+#             - androidTesters
 
